@@ -41,7 +41,7 @@ class FaceDetector:
 			return False, [[[]]], (), int(time.time())
 		# find out if the frame contains any faces
 		gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-		faces = self.__face_cascade.detectMultiScale(gray, 1.1, 2)
+		faces = self.__face_cascade.detectMultiScale(gray, 1.3, 5)
 		if len(faces) > 0:
 			return True, frame, faces, int(time.time())
 		else:
