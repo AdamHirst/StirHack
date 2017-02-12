@@ -1,0 +1,10 @@
+Need to be able to register:
+	- New store
+	- Each store has many cameras
+
+Upload an image:
+	- From a storeid with a camerid
+	- Uploads an image each request
+
+Image needs to be stored in the database so that another worker process can come and
+analysis the image using AWS API`
