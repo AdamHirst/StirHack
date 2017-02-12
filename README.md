@@ -11,7 +11,7 @@ Analyticat was built during the StirHack 2017 [MLH](https://mlh.io) event, over 
 - View analytics in a clean dashboard. You can view analytics over various discrete timesteps (hours, days, weeks, etc.) for your registered video sources (or groups thereof).
 - Utilise our own REST API so that you can use your own analytics data for something more unique!
 
-![user interface mockup](http://i.imgur.com/undefined.png)
+![user interface mockup](http://i.imgur.com/zmf3lQC.png)
 
 ## Current Functionality
 
