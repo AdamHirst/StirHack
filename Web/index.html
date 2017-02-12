@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Analyticat</title>
+
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Damion" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/custom.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body class="grey lighten-4">
+	<nav class="blue">
+		<div class="nav-wrapper container">
+			<a href="#" class="brand-logo">Analyticat</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li class="nopad"><a href="#" style="padding: 14px;"><div class="reload-button"></div></a></li>
+				<li class="profile-pic"><img src="img/profileoverlay.png" class="profile-overlay" /></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container" id="app">
+		<h5>Today</h5>
+		<div class="row">
+			<div class="col s1 m4 l4">
+				<div class="card"> 
+					<div class="card-content">
+						<canvas id="chartTodayUnique" width="400" height="200"></canvas>
+						<span class="card-title"><b>218</b><br>unique visitors</span>
+					</div>
+				</div>
+			</div>
+			<div class="col s1 m4 l4">
+				<div class="card"> 
+					<div class="card-content">
+						<canvas id="returningCustomers" width="400" height="200"></canvas>
+						<span class="card-title"><b>23%</b><br>returning customers</span>
+					</div>
+				</div>
+			</div>
+			<div class="col s1 m4 l4">
+				<div class="card"> 
+					<div class="card-content">
+						<canvas id="ageGraph" width="400" height="200"></canvas>
+						<span class="card-title"><b>32 years old</b><br>average age</span>
+					</div>
+				</div>
+			</div>
+			<div class="col s1 m4 l4">
+				<div class="card"> 
+					<div class="card-content">
+						<canvas id="genderChart" width="400" height="200"></canvas>
+						<span class="card-title"><b>64% female</b><br>estimated gender distribution</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- JQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- Chart.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<!-- Vue.js (vuejs.org) -->
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				today: {
+					unique: {
+						total: 135,
+						prev: 122,
+						avg: 142
+					},
+					new: {
+						cur: 82,
+						prev: 75,
+						avg: 92
+					},
+					return: {
+						cur: 53,
+						prev: 47,
+						avg: 50
+					}
+				}
+			}
+		});
+
+		var chartTodayUnique = new Chart($("#chartTodayUnique"), {
+			type: 'bar',
+			data: {
+				labels: ["8am", "9am", "10am", "11am", "12 noon", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"],
+				datasets: [{
+					type: 'line',
+					data: [0, 10, 35, 20, 50, 55, 50, 30, 20, 10, 0],
+					backgroundColor: 'rgba(33, 150, 243, 0.2)'
+				},
+				{
+					type: 'bar',
+					data: [0, 8, 34, 20, 45, 56, 55],
+					backgroundColor: 'rgba(72, 168, 242, 1)'
+				}]
+			},
+			options: {
+				legend: {
+			        display: false
+			    },
+			    scales: {
+		          xAxes: [{
+		            display: false
+
+		          }],
+		      	}
+			}
+		});
+
+		var returningCustomers = new Chart($("#returningCustomers"), {
+			type: 'doughnut',
+			data: {
+				labels: ["Returning", "New"],
+				datasets: [
+				{
+					data: [38, 130],
+					backgroundColor: [
+						'rgba(72, 168, 242, 1)',
+						'rgba(72, 168, 242, 0.2)'
+					]
+				}]
+			},
+			options: {
+				legend: {
+			        display: false
+			    },
+			}
+		});
+
+		var ageChart = new Chart($("#ageGraph"), {
+			type: 'bar',
+			data: {
+				labels: ["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60+"],
+				datasets: [{
+					data: [2, 8, 59, 91, 29, 18, 11],
+					backgroundColor: 'rgba(72, 168, 242, 1)'
+				}]
+			},
+			options: {
+				legend: {
+			        display: false
+			    },
+			    scales: {
+		          xAxes: [{
+		            display: true
+		          }],
+		          yAxes: [{
+		            display: false
+		          }],
+		        }
+			}
+		});
+
+		var genderChart = new Chart($("#genderChart"), {
+			type: 'doughnut',
+			data: {
+				labels: ["Female", "Male"],
+				datasets: [
+				{
+					data: [139, 79],
+					backgroundColor: [
+						'rgba(72, 168, 242, 1)',
+						'rgba(72, 168, 242, 0.2)'
+					]
+				}]
+			},
+			options: {
+				legend: {
+			        display: false
+			    },
+			}
+		});
+	</script>
+</body>
+</html>
